@@ -1,0 +1,152 @@
+package Simulator;
+
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
+
+public class OrbSet extends Orb{
+	
+	String colour;
+	int type;
+	String level;
+	Hashtable charlist;
+	String Name;
+	boolean active;
+	
+	public OrbSet(int colour,int type) {
+		super(colour);
+		this.type = type;
+        this.charlist = new Hashtable();
+        this.active = true;
+        this.level = "Empty";
+	}
+	
+	public String Rating(int type)
+	{
+		if (type == 0)
+		{
+			this.level = "3 stars";
+		}
+		else if (type == 1)
+		{
+			this.level = "4 stars";
+		}
+		else if (type == 2)
+		{
+			this.level = "5 stars";
+		}
+		else
+		{
+			this.level = "5 stars";
+		}
+		return this.level;
+	}
+
+//    public Hashtable Populate()
+//    {
+//    	int key = 0;
+//    	List<String> names = new ArrayList<String>();
+//    	if (this.type == 0)
+//    	{
+//    		names.add("Eliwood");
+//    		names.add("Olivia");
+//    		names.add("Hana");
+//    		names.add("Stahl");
+//    		names.add("Draug");
+//    		names.add("Palla");
+//    		names.add("Hinata");
+//    		names.add("Fir");
+//    		names.add("Laslow");
+//    		names.add("Selena");
+//    		names.add("Lonque");
+//    		names.add("Adult Tiki");
+//    		names.add("Sophia");
+//    		names.add("Henry");
+//    		names.add("Raigh");
+//    		
+//    	}
+//    	else if (this.type == 1)
+//    	{
+//    		names.add("Eliwood");
+//    		names.add("Olivia");
+//    		names.add("Hana");
+//    		names.add("Stahl");
+//    		names.add("Draug");
+//    		names.add("Palla");
+//    		names.add("Hinata");
+//    		names.add("Fir");
+//    		names.add("Laslow");
+//    		names.add("Selena");
+//    		names.add("Lonque");
+//    		names.add("Adult Tiki");
+//    		names.add("Sophia");
+//    		names.add("Henry");
+//    		names.add("Raigh");
+//    		names.add("Eirika");
+//    		names.add("Ogma");
+//    		names.add("Cain");
+//    		names.add("Corrin");
+//    		names.add("Chrom");
+//    		names.add("Caeda");
+//    		names.add("Seliph");
+//    		names.add("Marth");
+//    		names.add("Roy");
+//    		names.add("Tharja");
+//    		names.add("Lilina");
+//    	}
+//    	else if (this.type == 2)
+//    	{
+//    		names.add("Eirika");
+//    		names.add("Ogma");
+//    		names.add("Cain");
+//    		names.add("Corrin");
+//    		names.add("Chrom");
+//    		names.add("Caeda");
+//    		names.add("Seliph");
+//    		names.add("Marth");
+//    		names.add("Roy");
+//    		names.add("Tharja");
+//    		names.add("Lilina");
+//    		names.add("Karel");
+//    		names.add("Alm");
+//    		names.add("Eldigan");
+//    		names.add("Lyn");
+//    		names.add("Ryoma");
+//    		names.add("Lucina");
+//    		names.add("Young Tiki");
+//    		names.add("Sanaki");
+//    		names.add("Leo");
+//    	}
+//    	else 
+//    	{
+//    		names.add("Ike");
+//    	}
+//    	
+//        for (String hero : names)
+//            {
+//	            this.charlist.put(key, hero);
+//	            key++;
+//
+//        }
+//        return this.charlist;
+//    }
+    
+    @Override
+    public String SummonHero()
+    {
+    	Object Hero;
+    	List<Object> keys = new ArrayList<Object>();
+    	for (Object key : this.charlist.keySet())
+    	{
+    		keys.add(key);
+    	}
+    	
+    	Hero = this.charlist.get(keys.get(ThreadLocalRandom.current().nextInt(0, keys.size())));
+    	active = false;
+    	return Hero.toString();
+    	
+    }
+    
+	
+}
